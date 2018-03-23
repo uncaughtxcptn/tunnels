@@ -1,5 +1,7 @@
+const pick = require('lodash/pick');
+
 module.exports = (database, DataTypes) => {
-    return database.define('subdomain', {
+    const Subdomain = database.define('subdomain', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true
@@ -20,4 +22,10 @@ module.exports = (database, DataTypes) => {
     }, {
         timestamps: true
     });
+
+    Subdomain.prototype.normalize = function() {
+        return pick(this, ['id', 'name', 'data', 'ttl']);
+    };
+
+    return Subdomain;
 };
