@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/uncaughtxcptn/tunnels/issues"
   },
-  "homepage": "https://github.com/uncaughtxcptn/tunnels#readme"
+  "homepage": "https://github.com/uncaughtxcptn/tunnels#readme",
+  "devDependencies": {
+    "commitizen": "2.9.6",
+    "cz-conventional-changelog": "2.1.0"
+  }
 }
