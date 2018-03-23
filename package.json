@@ -25,6 +25,7 @@
   "devDependencies": {
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.1.0",
+    "nodemon": "1.17.2",
     "sequelize-cli": "4.0.0"
   },
   "config": {
