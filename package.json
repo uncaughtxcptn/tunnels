@@ -4,6 +4,7 @@
   "description": "Expose your localhost to the Internet",
   "main": "index.js",
   "scripts": {
+    "commit": "git-cz",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Uncaught Exception <uncaughtexception.blog@gmail.com> (http://uncaughtexception.wtf/)",
@@ -24,5 +25,10 @@
   "devDependencies": {
     "commitizen": "2.9.6",
     "cz-conventional-changelog": "2.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
