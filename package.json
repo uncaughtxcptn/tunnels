@@ -1,0 +1,24 @@
+{
+  "name": "tunnels",
+  "version": "1.0.0",
+  "description": "Expose your localhost to the Internet",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Uncaught Exception <uncaughtexception.blog@gmail.com> (http://uncaughtexception.wtf/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uncaughtxcptn/tunnels.git"
+  },
+  "keywords": [
+    "localhost",
+    "secure",
+    "tunnels"
+  ],
+  "bugs": {
+    "url": "https://github.com/uncaughtxcptn/tunnels/issues"
+  },
+  "homepage": "https://github.com/uncaughtxcptn/tunnels#readme"
+}
