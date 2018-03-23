@@ -30,5 +30,8 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "dotenv": "5.0.1"
   }
 }
