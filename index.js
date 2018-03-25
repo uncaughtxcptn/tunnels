@@ -26,4 +26,9 @@ async function start() {
     console.log('Server is running:', server.info.uri);
 }
 
+process.on('unhandledRejection', err => {
+    console.error(err);
+    process.exit(1);
+});
+
 start();
