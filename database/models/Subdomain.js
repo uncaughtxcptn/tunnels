@@ -1,4 +1,6 @@
+require('dotenv').config();
 const pick = require('lodash/pick');
+
 
 module.exports = (database, DataTypes) => {
     const Subdomain = database.define('subdomain', {
@@ -24,7 +26,10 @@ module.exports = (database, DataTypes) => {
     });
 
     Subdomain.prototype.normalize = function() {
-        return pick(this, ['id', 'name', 'data', 'ttl']);
+        return {
+            ...pick(this, ['id', 'name', 'data', 'ttl']),
+            address: this.name + '.' + process.env.HOST_DOMAIN
+        };
     };
 
     return Subdomain;
