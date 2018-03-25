@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "commit": "git-cz",
-    "start": "node index.js",
-    "dev": "nodemon index.js",
+    "start": "node bin/www",
+    "dev": "nodemon bin/www",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Uncaught Exception <uncaughtexception.blog@gmail.com> (http://uncaughtexception.wtf/)",

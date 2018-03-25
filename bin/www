@@ -1,0 +1,22 @@
+#!/usr/bin/env node
+const server = require('../index');
+
+function handleError(err) {
+    console.error(err);
+    process.exit(1);
+}
+
+async function initialize() {
+    await server.register({
+        plugin: require('hapi-pino'),
+        options: {
+            prettyPrint: process.env.NODE_ENV !== 'production'
+        }
+    });
+
+    await server.start().catch(handleError);
+}
+
+process.on('unhandledRejection', handleError);
+
+initialize();
