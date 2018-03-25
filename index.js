@@ -1,5 +1,4 @@
 require('dotenv').config();
-const { to } = require('await-to-js');
 const hapi = require('hapi');
 
 const server = hapi.server({
@@ -15,20 +14,16 @@ server.route({
     }
 });
 
-async function start() {
-    const [ err ] = await to(server.start());
-
-    if (err) {
-        console.error(err);
-        process.exit(1);
-    }
-
-    console.log('Server is running:', server.info.uri);
-}
-
-process.on('unhandledRejection', err => {
+function handleError(err) {
     console.error(err);
     process.exit(1);
-});
+}
+
+async function start() {
+    process.on('unhandledRejection', handleError);
+
+    await server.start().catch(handleError);
+    console.log('Server is running:', server.info.uri);
+}
 
 start();
