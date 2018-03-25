@@ -19,11 +19,18 @@ function handleError(err) {
     process.exit(1);
 }
 
-async function start() {
+async function initialize() {
     process.on('unhandledRejection', handleError);
+
+    await server.register({
+        plugin: require('hapi-pino'),
+        options: {
+            prettyPrint: process.env.NODE_ENV !== 'production'
+        }
+    });
 
     await server.start().catch(handleError);
     console.log('Server is running:', server.info.uri);
 }
 
-start();
+initialize();
