@@ -1,7 +1,7 @@
 require('dotenv').config();
 const hapi = require('hapi');
 const pick = require('lodash/pick');
-const subdomains = require('./lib/subdomains');
+const subdomains = require(process.env.SUBDOMAIN_LIB_PATH);
 
 const server = hapi.server({
     host: 'localhost',
