@@ -70,7 +70,7 @@ async function initialize() {
         path: '/{p*}',
         vhost: HOST_DOMAIN,
         async handler(request, h) {
-            return 'handling...';
+            return h.file('404.html').code(404);
         }
     });
 
