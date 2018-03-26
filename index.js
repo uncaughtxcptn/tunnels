@@ -12,7 +12,8 @@ server.route({
     method: 'GET',
     path: '/',
     handler(request, h) {
-        return 'hello hapi!';
+        const name = extractSubdomain(request.info.hostname) || 'hapi';
+        return `hello ${name}!`;
     }
 });
 
@@ -27,5 +28,12 @@ server.route({
         return pick(subdomain, ['address']);
     }
 });
+
+function extractSubdomain(host) {
+    const segments = host.split('.');
+    return segments.length > 2
+        ? segments.slice(0, segments.length - 2).join('.')
+        : null;
+}
 
 module.exports = server;
