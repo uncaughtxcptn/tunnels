@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const hapi = require('hapi');
 const pick = require('lodash/pick');
 const subdomains = require(process.env.SUBDOMAIN_LIB_PATH);
@@ -14,7 +15,12 @@ function handleError(err) {
 async function initialize() {
     const server = hapi.server({
         host: 'localhost',
-        port: process.env.PORT
+        port: process.env.PORT,
+        routes: {
+            files: {
+                relativeTo: path.resolve(__dirname, 'public')
+            }
+        }
     });
 
     await server.register({
@@ -24,12 +30,25 @@ async function initialize() {
         }
     });
 
+    await server.register(require('inert'));
+
     server.route({
         method: 'GET',
         path: '/',
         vhost: HOST_DOMAIN,
         handler(request, h) {
-            return `hello hapi!`;
+            return h.file('index.html');
+        }
+    });
+
+    server.route({
+        method: 'GET',
+        path: '/assets/{asset*}',
+        vhost: HOST_DOMAIN,
+        handler: {
+            directory: {
+                path: path.resolve(__dirname, 'public/assets')
+            }
         }
     });
 
