@@ -2,7 +2,6 @@
 *::before,
 *::after {
     box-sizing: border-box;
-    margin: 0;
 }
 
 html {
@@ -11,9 +10,20 @@ html {
 
 body {
     min-height: 100vh;
-    font-family: monospace;
+    padding-top: 10rem;
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
     font-size: 1.6em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-align: center;
     color: #333;
+}
+
+h1 {
+    font-weight: 600;
+}
+
+p {
+    color: #888;
 }
