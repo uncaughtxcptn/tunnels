@@ -3,6 +3,8 @@ const hapi = require('hapi');
 const pick = require('lodash/pick');
 const subdomains = require(process.env.SUBDOMAIN_LIB_PATH);
 
+const HOST_DOMAIN = process.env.HOST_DOMAIN;
+
 const server = hapi.server({
     host: 'localhost',
     port: process.env.PORT
@@ -11,6 +13,7 @@ const server = hapi.server({
 server.route({
     method: 'GET',
     path: '/',
+    vhost: HOST_DOMAIN,
     handler(request, h) {
         const name = extractSubdomain(request.info.hostname) || 'hapi';
         return `hello ${name}!`;
@@ -20,6 +23,7 @@ server.route({
 server.route({
     method: 'POST',
     path: '/tunnels',
+    vhost: HOST_DOMAIN,
     async handler(request, h) {
         const seed = request.info.remoteAddress + ':' + request.info.remotePort;
         const name = await subdomains.generate(seed);
