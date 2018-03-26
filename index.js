@@ -33,6 +33,23 @@ server.route({
     }
 });
 
+server.route({
+    method: '*',
+    path: '/{p*}',
+    vhost: HOST_DOMAIN,
+    async handler(request, h) {
+        return 'handling...';
+    }
+});
+
+server.route({
+    method: '*',
+    path: '/{p*}',
+    async handler(request, h) {
+        return `test response for ${request.info.hostname}${request.path}`;
+    }
+});
+
 function extractSubdomain(host) {
     const segments = host.split('.');
     return segments.length > 2
